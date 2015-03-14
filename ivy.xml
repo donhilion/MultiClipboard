@@ -1,0 +1,6 @@
+<ivy-module version="2.0">
+    <info organisation="de.donhilion" module="multiclipboard"/>
+    <dependencies>
+        <dependency org="com.github.tulskiy" name="jkeymaster" rev="1.1"/>
+    </dependencies>
+</ivy-module>
