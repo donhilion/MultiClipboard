@@ -64,7 +64,13 @@ public class Clipboard implements ClipboardOwner {
     @Override
     public void lostOwnership(java.awt.datatransfer.Clipboard clipboard, Transferable contents) {
         if(listener != null) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             listener.contentChanged(getClipboardContent());
+            registerForListening();
         }
     }
 }
