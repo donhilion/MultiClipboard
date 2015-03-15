@@ -25,6 +25,7 @@ public class MainWindow {
         window.add(panel);
         window.pack();
         window.setTitle("Multi Clipboard");
+        window.setAlwaysOnTop(true);
 
         window.addWindowListener(new WindowAdapter() {
             @Override
