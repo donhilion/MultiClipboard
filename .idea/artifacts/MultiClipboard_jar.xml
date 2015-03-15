@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MultiClipboard:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MultiClipboard_jar</output-path>
+    <root id="archive" name="MultiClipboard.jar">
+      <element id="module-output" name="MultiClipboard" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.github.tulskiy/jkeymaster/jars/jkeymaster-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/net.java.dev.jna/jna/jars/jna-3.5.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
