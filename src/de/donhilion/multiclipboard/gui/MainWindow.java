@@ -28,7 +28,7 @@ public class MainWindow {
 
         window.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosed(WindowEvent e) {
+            public void windowClosing(WindowEvent e) {
                 super.windowClosed(e);
 
                 if (onCloseListener != null) {
