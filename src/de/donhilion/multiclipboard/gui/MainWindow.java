@@ -1,6 +1,8 @@
 package de.donhilion.multiclipboard.gui;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -20,6 +22,8 @@ public class MainWindow {
     private JFrame window;
     private Runnable onCloseListener;
 
+    JCheckBoxMenuItem alwaysOnTop;
+
     public MainWindow() {
         window = new JFrame();
         window.add(panel);
@@ -37,6 +41,25 @@ public class MainWindow {
                 }
             }
         });
+
+        // add menu
+        JMenuBar menuBar = new JMenuBar();
+        window.setJMenuBar(menuBar);
+
+        JMenu settings = new JMenu("Settings");
+        settings.setMnemonic('S');
+        menuBar.add(settings);
+
+        alwaysOnTop = new JCheckBoxMenuItem("alwaysOnTop");
+        alwaysOnTop.setMnemonic('a');
+        alwaysOnTop.setState(true);
+        alwaysOnTop.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                window.setAlwaysOnTop(alwaysOnTop.getState());
+            }
+        });
+        settings.add(alwaysOnTop);
     }
 
     /**
