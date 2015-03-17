@@ -61,6 +61,10 @@ public class MainWindow {
         settings.add(alwaysOnTop);
 
         window.pack();
+
+        // set icon
+        ImageIcon img = new ImageIcon(this.getClass().getResource("/logo.png"));
+        window.setIconImage(img.getImage());
     }
 
     /**
