@@ -27,7 +27,6 @@ public class MainWindow {
     public MainWindow() {
         window = new JFrame();
         window.add(panel);
-        window.pack();
         window.setTitle("Multi Clipboard");
         window.setAlwaysOnTop(true);
 
@@ -60,6 +59,8 @@ public class MainWindow {
             }
         });
         settings.add(alwaysOnTop);
+
+        window.pack();
     }
 
     /**
