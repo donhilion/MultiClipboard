@@ -15,6 +15,7 @@ import de.donhilion.multiclipboard.systemtray.SystemTrayHandler;
 public class Main {
     private static MainWindow window;
     private static String[] fields = new String[5];
+    private static History history = new History();
 
     // clipboard
     private static Clipboard clipboard;
@@ -89,6 +90,9 @@ public class Main {
         }
         fields[0] = content;
         window.setCurrent(content);
+        if(content.length() > 0) {
+            history.newContent(content);
+        }
     }
 
     /**
