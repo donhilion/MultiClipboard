@@ -4,7 +4,7 @@ public class MainWindowTest {
 
     @org.junit.Test
     public void testShow() throws Exception {
-        MainWindow window = new MainWindow();
+        MainWindow window = new MainWindow(true);
         window.show();
     }
 }

@@ -24,8 +24,11 @@ public class MainWindow {
 
     JCheckBoxMenuItem alwaysOnTop;
 
-    public MainWindow() {
+    public MainWindow(boolean inTaskbar) {
         window = new JFrame();
+        if(!inTaskbar) {
+            window.setType(JFrame.Type.UTILITY);
+        }
         window.add(panel);
         window.setTitle("Multi Clipboard");
         window.setAlwaysOnTop(true);
@@ -71,6 +74,7 @@ public class MainWindow {
      * Displays the window.
      */
     public void show() {
+        window.setState(JFrame.NORMAL);
         window.setVisible(true);
     }
 
@@ -126,21 +130,5 @@ public class MainWindow {
      */
     public void setField4(String text) {
         field4.setText(text);
-    }
-
-    /**
-     * For testing the window.
-     *
-     * @param args The arguments.
-     */
-    public static void main(String[] args) {
-        MainWindow window = new MainWindow();
-        window.setOnCloseListener(new Runnable() {
-            @Override
-            public void run() {
-                System.exit(0);
-            }
-        });
-        window.show();
     }
 }

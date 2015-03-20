@@ -5,6 +5,7 @@ import de.donhilion.multiclipboard.clipboard.ContentChangeListener;
 import de.donhilion.multiclipboard.gui.MainWindow;
 import de.donhilion.multiclipboard.keyboard.KeyboardListener;
 import de.donhilion.multiclipboard.keyboard.ListenerCallback;
+import de.donhilion.multiclipboard.systemtray.SystemTrayHandler;
 
 /**
  * Created by Benn on 15.03.2015.
@@ -44,7 +45,15 @@ public class Main {
      * @param args The program arguments.
      */
     public static void main(String[] args) {
-        window = new MainWindow();
+        SystemTrayHandler tray = new SystemTrayHandler();
+        tray.setOnClickCallback(new Runnable() {
+            @Override
+            public void run() {
+                window.show();
+            }
+        });
+        window = new MainWindow(!tray.addIcon());
+
         window.setOnCloseListener(new Runnable() {
             @Override
             public void run() {
