@@ -2,6 +2,8 @@ package de.donhilion.multiclipboard;
 
 import de.donhilion.multiclipboard.clipboard.Clipboard;
 import de.donhilion.multiclipboard.clipboard.ContentChangeListener;
+import de.donhilion.multiclipboard.gui.HistoryCallback;
+import de.donhilion.multiclipboard.gui.HistoryWindow;
 import de.donhilion.multiclipboard.gui.MainWindow;
 import de.donhilion.multiclipboard.keyboard.KeyboardListener;
 import de.donhilion.multiclipboard.keyboard.ListenerCallback;
@@ -59,6 +61,22 @@ public class Main {
             @Override
             public void run() {
                 stop();
+            }
+        });
+        window.setOnHistoryListener(new Runnable() {
+            @Override
+            public void run() {
+                HistoryWindow historyWindow = new HistoryWindow(history.getHistory(), window.getWindow());
+                historyWindow.setCallback(new HistoryCallback() {
+                    @Override
+                    public void picked(String content) {
+                        if(content != null) {
+                            fields[0] = content;
+                            clipboard.setClipboardContent(content);
+                            window.setCurrent(content);
+                        }
+                    }
+                });
             }
         });
 

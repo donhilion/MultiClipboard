@@ -3,6 +3,8 @@ package de.donhilion.multiclipboard.gui;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -21,6 +23,7 @@ public class MainWindow {
 
     private JFrame window;
     private Runnable onCloseListener;
+    private Runnable onHistoryListener;
 
     JCheckBoxMenuItem alwaysOnTop;
 
@@ -63,6 +66,18 @@ public class MainWindow {
         });
         settings.add(alwaysOnTop);
 
+        JMenuItem history = new JMenuItem("History");
+        history.setMnemonic('H');
+        history.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (onHistoryListener != null) {
+                    onHistoryListener.run();
+                }
+            }
+        });
+        menuBar.add(history);
+
         window.pack();
 
         // set icon
@@ -85,6 +100,15 @@ public class MainWindow {
      */
     public void setOnCloseListener(Runnable onCloseListener) {
         this.onCloseListener = onCloseListener;
+    }
+
+    /**
+     * Sets the listener which is called when the history button is pressed.
+     *
+     * @param onHistoryListener The listener
+     */
+    public void setOnHistoryListener(Runnable onHistoryListener) {
+        this.onHistoryListener = onHistoryListener;
     }
 
     /**
@@ -130,5 +154,14 @@ public class MainWindow {
      */
     public void setField4(String text) {
         field4.setText(text);
+    }
+
+    /**
+     * Returns the JFrame instance.
+     *
+     * @return The JFrame
+     */
+    public JFrame getWindow() {
+        return window;
     }
 }
